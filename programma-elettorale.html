@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programma Elettorale - PONZANO UNITA</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .programma-slider {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            perspective: 2000px;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 141.4%; /* Rapporto aspetto A4 (1:1.414) */
+            margin: 0 auto;
+            transform-style: preserve-3d;
+        }
+
+        .page-spread {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            transform-style: preserve-3d;
+            transform-origin: left;
+        }
+
+        .page-spread.active {
+            display: flex;
+            z-index: 1;
+        }
+
+        .page-spread.turning {
+            display: flex;
+            z-index: 2;
+            animation: turnPage 1.2s ease-in-out forwards;
+        }
+
+        .page-spread.turning-back {
+            display: flex;
+            z-index: 2;
+            animation: turnPageBack 1.2s ease-in-out forwards;
+        }
+
+        @keyframes turnPage {
+            0% { transform: rotateY(0); }
+            100% { transform: rotateY(-180deg); }
+        }
+
+        @keyframes turnPageBack {
+            0% { transform: rotateY(-180deg); }
+            100% { transform: rotateY(0); }
+        }
+
+        .slider-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            backface-visibility: hidden;
+            margin: 0;
+        }
+
+        .slider-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 1rem;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            position: sticky;
+            bottom: 0;
+            z-index: 100;
+        }
+
+        .btn-nav {
+            padding: 12px 24px;
+            min-width: 150px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-nav:hover {
+            background-color: #2ab3a1;
+            transform: translateY(-2px);
+        }
+
+        .btn-nav:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        @media (max-width: 768px) {
+            .programma-slider {
+                padding: 10px;
+                margin: 10px;
+            }
+
+            .btn-nav {
+                padding: 10px 20px;
+                min-width: 120px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">
+                    <img src="logo.png" alt="Logo PONZANO UNITA" class="logo-img">
+                    <h1>PONZANO UNITA</h1>
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="candidato-sindaco.html">Candidato Sindaco</a></li>
+                <li><a href="la-squadra.html">La Squadra</a></li>
+                <li><a href="programma-elettorale.html">Programma</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="programma-content">
+            <div class="programma-intro">
+                <h2>Programma Elettorale 2025 - 2030</h2>
+                <p>Questo gruppo è convinto che Giuseppina Di Marzio sia la persona giusta con la quale, insieme, perseguire senza risparmiarsi, gli obiettivi prefissati per Ponzano.</p>
+            </div>
+
+            <div class="programma-slider">
+                <div class="slider-container">
+                    <div class="page-spread active">
+                        <img src="pagine-programma/pagina-1.webp" alt="Pagina 1" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-2.webp" alt="Pagina 2" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-3.webp" alt="Pagina 3" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-4.webp" alt="Pagina 4" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-5.webp" alt="Pagina 5" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-6.webp" alt="Pagina 6" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-7.webp" alt="Pagina 7" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-8.webp" alt="Pagina 8" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-9.webp" alt="Pagina 9" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-10.webp" alt="Pagina 10" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-11.webp" alt="Pagina 11" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-12.webp" alt="Pagina 12" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-13.webp" alt="Pagina 13" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-14.webp" alt="Pagina 14" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-15.webp" alt="Pagina 15" class="slider-image">
+                    </div>
+                    <div class="page-spread">
+                        <img src="pagine-programma/pagina-16.webp" alt="Pagina 16" class="slider-image">
+                    </div>
+                </div>
+                <div class="slider-controls">
+                    <button id="prev" class="btn-nav">Precedente</button>
+                    <button id="next" class="btn-nav">Successiva</button>
+                </div>
+            </div>
+
+            <div class="programma-buttons">
+                <a href="programma-elettorale.pdf" class="btn-download" download>DOWNLOAD PROGRAMMA ELETTORALE</a>
+            </div>
+
+            <div class="programma-conclusioni">
+                <h2>Conclusioni</h2>
+                <p>Questo programma rappresenta il nostro impegno concreto per il futuro di Ponzano. Siamo pronti a lavorare con passione e competenza per realizzare questi obiettivi, sempre ascoltando le esigenze dei cittadini e agendo nel rispetto del territorio.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 PONZANO UNITA - Lista Civica</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const spreads = document.querySelectorAll('.page-spread');
+            const prevBtn = document.getElementById('prev');
+            const nextBtn = document.getElementById('next');
+            let currentIndex = 0;
+            let isAnimating = false;
+
+            function showSpread(index, direction) {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                const currentSpread = spreads[currentIndex];
+                const targetSpread = spreads[index];
+
+                spreads.forEach(spread => {
+                    spread.classList.remove('active', 'turning', 'turning-back');
+                    spread.style.display = 'none';
+                });
+
+                if (direction === 'next') {
+                    currentSpread.classList.add('turning');
+                    targetSpread.classList.add('active');
+                    targetSpread.style.display = 'flex';
+                } else {
+                    targetSpread.classList.add('turning-back');
+                    currentSpread.classList.add('active');
+                    targetSpread.style.display = 'flex';
+                }
+
+                setTimeout(() => {
+                    if (direction === 'next') {
+                        targetSpread.classList.add('active');
+                        currentSpread.classList.remove('turning');
+                        currentSpread.style.display = 'none';
+                    } else {
+                        targetSpread.classList.add('active');
+                        targetSpread.classList.remove('turning-back');
+                        currentSpread.style.display = 'none';
+                    }
+                    isAnimating = false;
+                }, 1200);
+
+                currentIndex = index;
+                prevBtn.disabled = currentIndex === 0;
+                nextBtn.disabled = currentIndex === spreads.length - 1;
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentIndex > 0 && !isAnimating) {
+                    showSpread(currentIndex - 1, 'prev');
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentIndex < spreads.length - 1 && !isAnimating) {
+                    showSpread(currentIndex + 1, 'next');
+                }
+            });
+
+            // Inizializzazione
+            spreads[0].classList.add('active');
+            prevBtn.disabled = true;
+        });
+    </script>
+</body>
+</html> 
