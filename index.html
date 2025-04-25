@@ -37,7 +37,11 @@
     <main>
         <section class="hero">
             <div class="hero-image">
-                <img src="images/home/1.jpg" alt="San Giovanni in Fiore" class="main-image">
+                <picture>
+                    <source media="(max-width: 768px)" srcset="images/home/mobile.jpg">
+                    <source media="(min-width: 769px)" srcset="images/home/1.jpg">
+                    <img src="images/home/1.jpg" alt="San Giovanni in Fiore" class="main-image">
+                </picture>
             </div>
         </section>
 
