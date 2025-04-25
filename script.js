@@ -77,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Menu hamburger
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
+    const body = document.body;
     
     console.log('Hamburger element:', hamburger);
     console.log('Nav links element:', navLinks);
@@ -84,46 +85,33 @@ document.addEventListener('DOMContentLoaded', function() {
     if (hamburger && navLinks) {
         console.log('Elementi del menu trovati, aggiungo event listener');
         
-        // Gestione click/touch sul hamburger
+        // Gestione click sul hamburger
         hamburger.addEventListener('click', toggleMenu);
-        hamburger.addEventListener('touchend', function(e) {
-            e.preventDefault();
-            toggleMenu();
-        });
-
+        
         // Chiudi il menu quando si clicca su un link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', closeMenu);
-            link.addEventListener('touchend', function(e) {
-                e.preventDefault();
-                closeMenu();
-                const href = this.getAttribute('href');
-                if (href) {
-                    window.location.href = href;
-                }
-            });
         });
 
         // Chiudi il menu quando si clicca fuori
         document.addEventListener('click', function(e) {
-            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
                 closeMenu();
             }
         });
-
-        // Funzioni di supporto
-        function toggleMenu() {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            document.body.classList.toggle('nav-active');
-        }
-
-        function closeMenu() {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-            document.body.classList.remove('nav-active');
-        }
     } else {
         console.log('Attenzione: elementi del menu non trovati');
+    }
+
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        body.classList.toggle('nav-active');
+    }
+
+    function closeMenu() {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+        body.classList.remove('nav-active');
     }
 }); 
